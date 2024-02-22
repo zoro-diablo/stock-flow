@@ -81,7 +81,7 @@ const Navbar = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </div>
-        <Button  size='icon'>
+        <Button size='icon'>
           <IoIosAdd className='h-6 w-6' />
         </Button>
       </div>
