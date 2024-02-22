@@ -21,7 +21,7 @@ const HomePage = () => {
     <div className='my-2'>
       <ContextMenu>
         <ContextMenuTrigger className='flex  border rounded-md min-h-screen '>
-          <div>
+          <div className='w-full'>
             <Product />
           </div>
         </ContextMenuTrigger>

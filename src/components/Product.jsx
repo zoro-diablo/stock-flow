@@ -31,13 +31,12 @@ const getTopics = async () => {
 };
 
 export default async function Product() {
-
   const { topics } = await getTopics();
 
   return (
-    <div className='m-5 grid grid-cols-6 gap-4'>
+    <div className=' grid grid-cols-4  gap-2  w-full'>
       {topics.map((t) => (
-        <Card key={t._id} className='col-span-1'>
+        <Card key={t._id} className='col-span-1 m-4'>
           <CardHeader>
             <CardTitle>{t.title}</CardTitle>
             <CardDescription>router @2.86.01</CardDescription>
