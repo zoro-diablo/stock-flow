@@ -20,6 +20,7 @@ import { Button } from '@/components/ui/button';
 import { IoIosAdd } from 'react-icons/io';
 import Link from 'next/link';
 
+
 const Navbar = () => {
   return (
     <Card className='dark  flex justify-between items-center'>
@@ -84,11 +85,6 @@ const Navbar = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </div>
-        <Link href={"/addTopic"}>
-        <Button size='icon'>
-          <IoIosAdd className='h-6 w-6' />
-        </Button>
-        </Link>
       </div>
     </Card>
   );

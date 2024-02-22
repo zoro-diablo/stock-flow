@@ -1,4 +1,5 @@
 import Product from '@/components/Product';
+import TableList from '@/components/TableList';
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -14,7 +15,7 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from '@/components/ui/context-menu';
-
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const HomePage = () => {
   return (
@@ -22,7 +23,18 @@ const HomePage = () => {
       <ContextMenu>
         <ContextMenuTrigger className='flex  border rounded-md min-h-screen '>
           <div className='w-full'>
-            <Product />
+            <Tabs defaultValue='account' className='w-full'>
+              <TabsList className='grid w-full grid-cols-2'>
+                <TabsTrigger value='account'>Table</TabsTrigger>
+                <TabsTrigger value='password'>Cards</TabsTrigger>
+              </TabsList>
+              <TabsContent value='account'>
+                <TableList />
+              </TabsContent>
+              <TabsContent value='password'>
+                <Product />
+              </TabsContent>
+            </Tabs>
           </div>
         </ContextMenuTrigger>
         <ContextMenuContent className='w-64'>

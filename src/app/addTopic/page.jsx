@@ -7,17 +7,19 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
+
 export default function AddTopic() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
 
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !description) {
-      alert('Title and description are required.');
+    if (!title || !description || !price) {
+      alert('Title , description and Price are required.');
       return;
     }
 
@@ -29,12 +31,12 @@ export default function AddTopic() {
           headers: {
             'Content-type': 'application/json',
           },
-          body: JSON.stringify({ title, description }),
+          body: JSON.stringify({ title, description , price }),
         }
       );
 
       if (res.ok) {
-        router.refresh()
+        router.refresh();
         router.push('/');
       } else {
         throw new Error('Failed to create a topic');
@@ -45,9 +47,10 @@ export default function AddTopic() {
   };
 
   return (
-    <Card className='my-4 '>
+    <div className='flex justify-center'>
+    <Card className='my-4 w-[600px]'>
       <CardHeader>
-        <CardTitle>Add Topic</CardTitle>
+        <CardTitle>Add Item</CardTitle>
       </CardHeader>
       <form onSubmit={handleSubmit} className='flex flex-col gap-5 m-5'>
         <Input
@@ -55,19 +58,27 @@ export default function AddTopic() {
           value={title}
           className='border border-slate-500  py-4'
           type='text'
-          placeholder='Topic Title'
+          placeholder='Product Name'
+        />
+        <Input
+          onChange={(e) => setPrice(e.target.value)}
+          value={price}
+          className='border border-slate-500  py-4'
+          type='number'
+          placeholder='Price'
         />
         <Textarea
           onChange={(e) => setDescription(e.target.value)}
           value={description}
           className='border border-slate-500  py-2'
           type='text'
-          placeholder='Topic Description'
+          placeholder='Remarks'
         />
         <Button type='submit' className='  py-3  w-full '>
-          Add Topic
+          Add Item
         </Button>
       </form>
     </Card>
+  </div>
   );
 }

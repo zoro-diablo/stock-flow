@@ -9,6 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import RemoveBtn from './RemoveBtn';
+import { Badge } from './ui/badge';
 
 const getTopics = async () => {
   try {
@@ -38,8 +39,15 @@ export default async function Product() {
       {topics.map((t) => (
         <Card key={t._id} className='col-span-1 m-4'>
           <CardHeader>
-            <CardTitle>{t.title}</CardTitle>
-            <CardDescription>router @2.86.01</CardDescription>
+            <div  className='flex  justify-between'>
+              <div>
+                <CardTitle>{t.title}</CardTitle>
+                <CardDescription>router @2.86.01</CardDescription>
+              </div>
+              <div>
+                <Badge variant='outline' className='text-xl '>₹ {t.price}</Badge>
+              </div>
+            </div>
           </CardHeader>
           <CardContent>
             <p>{t.description}</p>

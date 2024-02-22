@@ -7,9 +7,10 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
-export default function EditTopicForm({ id, title, description }) {
+export default function EditTopicForm({ id, title, description , price}) {
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
+  const [newPrice, setNewPrice] = useState(price);
 
   const router = useRouter();
 
@@ -22,7 +23,7 @@ export default function EditTopicForm({ id, title, description }) {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ newTitle, newDescription }),
+        body: JSON.stringify({ newTitle, newDescription , newPrice }),
       });
     
       if (!res.ok) {
@@ -38,29 +39,38 @@ export default function EditTopicForm({ id, title, description }) {
 
 
   return (
-    <Card className='my-4 '>
-      <CardHeader>
-        <CardTitle>Add Topic</CardTitle>
-      </CardHeader>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-5 m-5'>
-        <Input
-          onChange={(e) => setNewTitle(e.target.value)}
-          value={newTitle}
-          className='border border-slate-500  py-4'
-          type='text'
-          placeholder='Topic Title'
-        />
-        <Textarea
-            onChange={(e) => setNewDescription(e.target.value)}
-            value={newDescription}
-          className='border border-slate-500  py-2'
-          type='text'
-          placeholder='Topic Description'
-        />
-        <Button type='submit' className='  py-3  w-full '>
-          Update Topic
-        </Button>
-      </form>
-    </Card>
+    <div className='flex justify-center'>
+      <Card className='my-4 w-[600px]'>
+        <CardHeader>
+          <CardTitle>Add Product</CardTitle>
+        </CardHeader>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-8 m-5'>
+          <Input
+            onChange={(e) => setNewTitle(e.target.value)}
+            value={newTitle}
+            className='border border-slate-500  py-4'
+            type='text'
+            placeholder='Product Name'
+          />
+          <Input
+            onChange={(e) => setNewPrice(e.target.value)}
+            value={newPrice}
+            className='border border-slate-500  py-4'
+            type='text'
+            placeholder='Product Price'
+          />
+          <Textarea
+              onChange={(e) => setNewDescription(e.target.value)}
+              value={newDescription}
+            className='border border-slate-500  py-2'
+            type='text'
+            placeholder='Remarks'
+          />
+          <Button type='submit' className='  py-3  w-full '>
+            Update Product
+          </Button>
+        </form>
+      </Card>
+    </div>
   );
 }
