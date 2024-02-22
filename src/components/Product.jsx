@@ -33,7 +33,7 @@ export default async function Product() {
   const { topics } = await getTopics();
 
   return (
-    <div  className='m-5 grid grid-cols-4 gap-4'>
+    <div className='m-5 grid grid-cols-4 gap-4'>
       {topics.map((t) => (
         <Card key={t._id}>
           <CardHeader>
