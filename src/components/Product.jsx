@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import RemoveBtn from './RemoveBtn';
 
 const getTopics = async () => {
   try {
@@ -30,12 +31,13 @@ const getTopics = async () => {
 };
 
 export default async function Product() {
+
   const { topics } = await getTopics();
 
   return (
-    <div className='m-5 grid grid-cols-4 gap-4'>
+    <div className='m-5 grid grid-cols-6 gap-4'>
       {topics.map((t) => (
-        <Card key={t._id}>
+        <Card key={t._id} className='col-span-1'>
           <CardHeader>
             <CardTitle>{t.title}</CardTitle>
             <CardDescription>router @2.86.01</CardDescription>
@@ -47,7 +49,7 @@ export default async function Product() {
             <Link href={`/editTopic/${t._id}`}>
               <Button>Edit</Button>
             </Link>
-            <Button id={t._id}>Delete</Button>
+            <RemoveBtn id={t._id} />
           </CardFooter>
         </Card>
       ))}

@@ -18,13 +18,16 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { IoIosAdd } from 'react-icons/io';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
     <Card className='dark  flex justify-between items-center'>
       <div className='flex items-center'>
         <CardHeader>
-          <CardTitle className='font-bold text-lg '>Stock Flow</CardTitle>
+          <Link href={'/'}>
+            <CardTitle className='font-bold text-lg '>Stock Flow</CardTitle>
+          </Link>
         </CardHeader>
         <div className='flex gap-2'>
           <Menubar>
@@ -81,9 +84,11 @@ const Navbar = () => {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </div>
+        <Link href={"/addTopic"}>
         <Button size='icon'>
           <IoIosAdd className='h-6 w-6' />
         </Button>
+        </Link>
       </div>
     </Card>
   );
