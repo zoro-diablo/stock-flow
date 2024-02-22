@@ -18,7 +18,8 @@ export default function RemoveBtn({ id }) {
   const router = useRouter();
 
   const removeTopic = async () => {
-    const res = await fetch(`http://localhost:3000/api/topics?id=${id}`, {
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/topics?id=${id}`;
+    const res = await fetch(apiUrl, {
       method: 'DELETE',
     });
 
