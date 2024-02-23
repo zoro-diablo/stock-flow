@@ -1,3 +1,4 @@
+// import Dashboard from '@/components/Dashboard';
 import Product from '@/components/Product';
 import TableList from '@/components/TableList';
 import {
@@ -27,6 +28,7 @@ const HomePage = () => {
               <TabsList className='grid w-[97%] mx-auto   grid-cols-2'>
                 <TabsTrigger value='account'>Table</TabsTrigger>
                 <TabsTrigger value='password'>Cards</TabsTrigger>
+                {/* <TabsTrigger value='dashboard'>Analytics</TabsTrigger> */}
               </TabsList>
               <TabsContent value='account'>
                 <TableList />
@@ -34,6 +36,9 @@ const HomePage = () => {
               <TabsContent value='password'>
                 <Product />
               </TabsContent>
+              {/* <TabsContent value='dashboard'>
+                <Dashboard />
+              </TabsContent> */}
             </Tabs>
           </div>
         </ContextMenuTrigger>

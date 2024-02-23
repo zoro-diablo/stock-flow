@@ -13,6 +13,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { toast } from "sonner"
+
 
 export default function RemoveBtn({ id }) {
   const router = useRouter();
@@ -24,6 +26,7 @@ export default function RemoveBtn({ id }) {
     });
 
     if (res.ok) {
+      toast("Product Deleted Successfully")
       router.refresh();
     }
   };

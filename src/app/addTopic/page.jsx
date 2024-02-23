@@ -17,6 +17,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { Label } from '@/components/ui/label';
+import { toast } from "sonner"
 
 
 export default function AddTopic() {
@@ -34,13 +35,14 @@ export default function AddTopic() {
 
     if (
       !title ||
-      !description ||
       !price ||
       !startDate ||
       !endDate ||
       !quantity 
     ) {
-      alert('Please fill in all fields and select start and end dates.');
+      toast('All fields Required',{
+        description : 'Please fill in all fields and select start and end dates.'
+      });
       return;
     }
 
@@ -62,12 +64,15 @@ export default function AddTopic() {
           }),
         }
       );
-
+        
       if (res.ok) {
         router.refresh();
         router.push('/');
+        toast("Product added successfully")
       } else {
+        toast("Failed to create a Product")
         throw new Error('Failed to create a topic');
+      
       }
     } catch (error) {
       console.log(error);

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navbar from '@/components/Navbar';
 import BadgeBtn from '@/components/BadgeBtn';
 import './globals.css';
+import { Toaster } from "@/components/ui/sonner"
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
         <link rel='icon' href='/logo.png' />
       </Head>
       <body className={inter.className}>
+      <Toaster />
         <div className='m-2'>
           <Navbar />
           {children}

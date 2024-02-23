@@ -17,6 +17,8 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { Label } from '@/components/ui/label';
+import { toast } from "sonner"
+
 
 export default function EditTopicForm({
   id,
@@ -58,9 +60,10 @@ export default function EditTopicForm({
       );
 
       if (!res.ok) {
+        toast("Failed to update Product")
         throw new Error('Failed to update topic');
       }
-
+      toast("Product Updated Successfully")
       router.refresh();
       router.push('/');
     } catch (error) {
