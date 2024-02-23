@@ -74,7 +74,7 @@ export default async function Product() {
                 Qty : {t.quantity}
               </Badge>
               <Badge variant='secondary' className='text-sm rounded-full'>
-                Pri / Qty : ₹ {t.pricePerQty}
+                Pri / Qty : ₹ {(t.price / t.quantity).toFixed(2)}
               </Badge>
             </div>
             <div className='flex gap-4'>

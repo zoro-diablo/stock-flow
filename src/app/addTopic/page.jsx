@@ -26,7 +26,6 @@ export default function AddTopic() {
   const [quantity, setQuantity] = useState('');
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [pricePerQty, setPricePerQty] = useState('');
 
   const router = useRouter();
 
@@ -39,8 +38,7 @@ export default function AddTopic() {
       !price ||
       !startDate ||
       !endDate ||
-      !quantity ||
-      !pricePerQty
+      !quantity 
     ) {
       alert('Please fill in all fields and select start and end dates.');
       return;
@@ -61,7 +59,6 @@ export default function AddTopic() {
             startDate,
             endDate,
             quantity,
-            pricePerQty,
           }),
         }
       );
@@ -103,29 +100,17 @@ export default function AddTopic() {
               type='number'
               placeholder='No of Quantity'
             />
-          </div>
-          <div className='flex justify-between'>
+          </div>    
             <div className='grid gap-2'>
               <Label htmlFor='terms'>Price</Label>
               <Input
                 onChange={(e) => setPrice(e.target.value)}
                 value={price}
-                className='border border-slate-500  py-4 w-[260px]'
+                className='border border-slate-500  py-4 '
                 type='number'
                 placeholder='Add Price'
               />
-            </div>
-            <div className='grid gap-2'>
-              <Label htmlFor='terms'>Price / Qty</Label>
-              <Input
-                onChange={(e) => setPricePerQty(e.target.value)}
-                value={pricePerQty}
-                className='border border-slate-500  py-4 w-[260px]'
-                type='number'
-                placeholder='Add Price per Quantity'
-              />
-            </div>
-          </div>
+            </div>   
           <div className='grid gap-2'>
             <Label htmlFor='terms'>Remarks</Label>
             <Textarea

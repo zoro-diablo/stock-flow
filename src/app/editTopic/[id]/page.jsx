@@ -21,6 +21,6 @@ const getTopicById = async (id) => {
 export default async function EditTopic({ params }) {
   const { id } = params;
   const { topic } = await getTopicById(id);
-  const { title, description , price , quantity , startDate , endDate , pricePerQty } = topic;
-  return <EditTopicForm id={id} title={title} description={description} price={price} quantity={quantity} startDate={startDate} endDate={endDate} pricePerQty={pricePerQty} />;
+  const { title, description , price , quantity , startDate , endDate  } = topic;
+  return <EditTopicForm id={id} title={title} description={description} price={price} quantity={quantity} startDate={startDate} endDate={endDate}  />;
 }

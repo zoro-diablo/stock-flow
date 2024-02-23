@@ -55,7 +55,7 @@ export default async function TableList() {
             <TableHead className='text-center'>Product</TableHead>
             <TableHead className='text-center'>Bought On</TableHead>
             <TableHead className='text-center'>Expires On</TableHead>
-            <TableHead className='text-center'>Description</TableHead>
+            <TableHead className='text-center'>Remarks</TableHead>
             <TableHead className='text-center'>Quantity</TableHead>
             <TableHead className='text-center'>Amount</TableHead>
             <TableHead className='text-center'>Price/Qty</TableHead>
@@ -73,7 +73,7 @@ export default async function TableList() {
               <TableCell className='text-center'>{t.description}</TableCell>
               <TableCell className='text-center'>{t.quantity}</TableCell>
               <TableCell className='text-center'>₹ {t.price}</TableCell>
-              <TableCell className='text-center'>₹ {t.pricePerQty}</TableCell>
+              <TableCell className='text-center'>₹ {(t.price / t.quantity).toFixed(2)}</TableCell>
               <TableCell className='flex gap-2 justify-center'>
                 <Link href={`/editTopic/${t._id}`}>
                   <Button className='bg-black border group hover:bg-black'>

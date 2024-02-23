@@ -26,7 +26,6 @@ export default function EditTopicForm({
   quantity,
   startDate,
   endDate,
-  pricePerQty,
 }) {
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
@@ -34,7 +33,6 @@ export default function EditTopicForm({
   const [newQuantity, setNewQuantity] = useState(quantity);
   const [newStartDate, setNewStartDate] = useState(startDate);
   const [newEndDate, setNewEndDate] = useState(endDate);
-  const [newPricePerQty, setNewPricePerQty] = useState(pricePerQty);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -55,7 +53,6 @@ export default function EditTopicForm({
             newQuantity,
             newStartDate,
             newEndDate,
-            newPricePerQty,
           }),
         }
       );
@@ -98,27 +95,15 @@ export default function EditTopicForm({
               placeholder='Update No of Quantity'
             />
           </div>
-          <div className='flex justify-between'>
-            <div className='grid gap-2'>
-              <Label htmlFor='terms'>Price</Label>
-              <Input
-                onChange={(e) => setNewPrice(e.target.value)}
-                value={newPrice}
-                className='border border-slate-500  py-4'
-                type='text'
-                placeholder='Update Product Price'
-              />
-            </div>
-            <div className='grid gap-2'>
-              <Label htmlFor='terms'>Price / Qty</Label>
-              <Input
-                onChange={(e) => setNewPricePerQty(e.target.value)}
-                value={newPricePerQty}
-                className='border border-slate-500  py-4'
-                type='text'
-                placeholder='Update Price / Qty'
-              />
-            </div>
+          <div className='grid gap-2'>
+            <Label htmlFor='terms'>Price</Label>
+            <Input
+              onChange={(e) => setNewPrice(e.target.value)}
+              value={newPrice}
+              className='border border-slate-500  py-4'
+              type='text'
+              placeholder='Update Product Price'
+            />
           </div>
           <div className='grid gap-2'>
             <Label htmlFor='terms'>Remarks</Label>
