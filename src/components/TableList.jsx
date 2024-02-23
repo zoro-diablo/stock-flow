@@ -13,6 +13,8 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import RemoveBtn from './RemoveBtn';
 import { FaEdit } from 'react-icons/fa';
+import { format, isValid } from 'date-fns';
+
 
 const getTopics = async () => {
   try {
@@ -34,6 +36,14 @@ const getTopics = async () => {
   }
 };
 
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  if (!isValid(date)) {
+    return 'Invalid date';
+  }
+  return format(date, ' do MMM , yy');
+};
+
 export default async function TableList() {
   const { topics } = await getTopics();
 
@@ -43,8 +53,12 @@ export default async function TableList() {
         <TableHeader>
           <TableRow>
             <TableHead className='text-center'>Product</TableHead>
+            <TableHead className='text-center'>Bought On</TableHead>
+            <TableHead className='text-center'>Expires On</TableHead>
             <TableHead className='text-center'>Description</TableHead>
+            <TableHead className='text-center'>Quantity</TableHead>
             <TableHead className='text-center'>Amount</TableHead>
+            <TableHead className='text-center'>Price/Qty</TableHead>
             <TableHead className='text-center'>Action</TableHead>
           </TableRow>
         </TableHeader>
@@ -54,8 +68,12 @@ export default async function TableList() {
               <TableCell className='font-medium text-center'>
                 {t.title}
               </TableCell>
+              <TableCell className='text-center'>{formatDate(t.startDate)}</TableCell>
+              <TableCell className='text-center'>{formatDate(t.endDate)}</TableCell>
               <TableCell className='text-center'>{t.description}</TableCell>
-              <TableCell className='text-center'>{t.price}</TableCell>
+              <TableCell className='text-center'>{t.quantity}</TableCell>
+              <TableCell className='text-center'>₹ {t.price}</TableCell>
+              <TableCell className='text-center'>₹ {t.pricePerQty}</TableCell>
               <TableCell className='flex gap-2 justify-center'>
                 <Link href={`/editTopic/${t._id}`}>
                   <Button className='bg-black border group hover:bg-black'>
@@ -69,7 +87,7 @@ export default async function TableList() {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={3} className='text-center'></TableCell>
+            <TableCell colSpan={7} className='text-center'></TableCell>
             <TableCell className='text-center'></TableCell>
           </TableRow>
         </TableFooter>

@@ -4,7 +4,11 @@ const topicSchema = new Schema(
   {
     title: String,
     description: String,
+    quantity: Number,
     price: Number,
+    startDate: Date, 
+    endDate: Date,
+    pricePerQty: Number,
   },
   { timestamps: true }
 );

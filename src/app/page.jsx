@@ -23,8 +23,8 @@ const HomePage = () => {
       <ContextMenu>
         <ContextMenuTrigger className='flex  border rounded-md min-h-screen '>
           <div className='w-full'>
-            <Tabs defaultValue='account' className='w-full'>
-              <TabsList className='grid w-full grid-cols-2'>
+            <Tabs defaultValue='account' className='w-full mt-2'>
+              <TabsList className='grid w-[97%] mx-auto   grid-cols-2'>
                 <TabsTrigger value='account'>Table</TabsTrigger>
                 <TabsTrigger value='password'>Cards</TabsTrigger>
               </TabsList>
